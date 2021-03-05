@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IImageManipulator.cs" />
     <Compile Include="ImageManipulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
