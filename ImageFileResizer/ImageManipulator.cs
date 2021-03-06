@@ -67,12 +67,15 @@ namespace ImageFileResizer
             //backup sourceStream
             MemoryStream sourceBackup = new MemoryStream();
             sourceStream.CopyTo(sourceBackup);
+
+            //set memory stream read position back to the beginning
             sourceStream.Seek(0, SeekOrigin.Begin);
             sourceBackup.Seek(0, SeekOrigin.Begin);
 
+            //Define a targetStream
             MemoryStream targetStream = new MemoryStream();
 
-            //Execute initial Image builder as the different compression may reduce file size
+            //Execute initial Image builder as the different compression may reduce file size without changing dimensions.
             ImageBuilder.Current.Build(sourceStream, targetStream, resizeSetting);
 
             //Determine ResizeSettings required to meet file size criteria
@@ -90,7 +93,8 @@ namespace ImageFileResizer
         /// <returns>ResizeSettings</returns>
         private ResizeSettings GetMaxImageSettings(MemoryStream imageStream, ResizeSettings currentSettings)
         {
-            //keep reducing the height and width by 5% until bytes below threshold
+            //keep reducing the height and width by 5% until bytes below threshold.
+            // TODO - Possible improvement. This could be parameterised to allow it to be set.
             while (imageStream.Length > maxImageBytes)
             {
                 //make sure MemoryStream is at the begining
