@@ -94,7 +94,7 @@ namespace ImageFileResizer
         private ResizeSettings GetMaxImageSettings(MemoryStream imageStream, ResizeSettings currentSettings)
         {
             //keep reducing the height and width by 5% until bytes below threshold.
-            // TODO - Possible improvement. This could be parameterised to allow it to be set.
+            // TODO - Possible improvement. This could be parameterised to allow it to be set. (This appears in View -> Task List)
             while (imageStream.Length > maxImageBytes)
             {
                 //make sure MemoryStream is at the begining
