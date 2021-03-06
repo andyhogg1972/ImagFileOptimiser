@@ -21,7 +21,13 @@ namespace ImageFileResizer
             maxImageBytes = newMax;
         }
 
-
+        /// <summary>
+        /// Resizes and copies a source image from one location to another.
+        /// Source and Target must be different.
+        /// Uses ImageResizer library
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="target"></param>
         public void ResizeImageBytes(string source, string target)
         {
             if (string.IsNullOrEmpty(source) || string.IsNullOrEmpty(target))

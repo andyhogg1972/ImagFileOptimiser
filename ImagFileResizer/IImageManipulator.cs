@@ -12,7 +12,7 @@ namespace ImageFileResizer
         void MaxImageBytes(long newMax);
 
         /// <summary>
-        /// 
+        /// Overloaded method to handle MemoryStream data taken from clipboard etc.
         /// </summary>
         /// <param name="sourceStream"></param>
         /// <param name="target"></param>
