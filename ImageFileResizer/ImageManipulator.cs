@@ -40,20 +40,10 @@ namespace ImageFileResizer
                 throw new ArgumentException("Target and Source cannot be the same!");
             }
 
-            //load bitmap to get image attributes
-            Bitmap img = new Bitmap(source);
-
-            //initialise resize settings
-            ResizeSettings resizeSetting = new ResizeSettings
-            {
-                Width = img.Width,
-                Height = img.Height
-            };
-
             //load MemoryStream to determine size in bytes
             MemoryStream sourceStream = new MemoryStream(File.ReadAllBytes(source));
 
-            ResizeImageBytes(sourceStream, target, resizeSetting);
+            ResizeImageBytes(sourceStream, target);
         }
 
         /// <summary>
@@ -62,8 +52,23 @@ namespace ImageFileResizer
         /// <param name="sourceStream"></param>
         /// <param name="target"></param>
         /// <param name="resizeSetting"></param>
-        public void ResizeImageBytes(MemoryStream sourceStream, string target, ResizeSettings resizeSetting)
+        public void ResizeImageBytes(MemoryStream sourceStream, string target)
         {
+            if (string.IsNullOrEmpty(target))
+            {
+                throw new ArgumentNullException();
+            }
+
+            //load bitmap to get image attributes
+            Bitmap img = new Bitmap(sourceStream);
+
+            //initialise resize settings
+            ResizeSettings resizeSetting = new ResizeSettings
+            {
+                Width = img.Width,
+                Height = img.Height
+            };
+
             //backup sourceStream
             MemoryStream sourceBackup = new MemoryStream();
             sourceStream.CopyTo(sourceBackup);

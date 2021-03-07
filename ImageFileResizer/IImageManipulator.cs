@@ -17,7 +17,7 @@ namespace ImageFileResizer
         /// <param name="sourceStream"></param>
         /// <param name="target"></param>
         /// <param name="resizeSetting"></param>
-        void ResizeImageBytes(MemoryStream sourceStream, string target, ResizeSettings resizeSetting);
+        void ResizeImageBytes(MemoryStream sourceStream, string target);
 
         /// <summary>
         /// Resizes and copies a source image from one location to another.
